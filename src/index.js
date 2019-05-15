@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './style.css';
 
 class Thermostat extends React.Component {
   constructor() {
@@ -18,7 +19,11 @@ class Thermostat extends React.Component {
 
 function Temperature(props) {
   return (
-    <h1>{props.temp}</h1>
+    <div>
+      <center>
+        <div className="bold">{props.temp}</div>
+      </center>
+    </div>
   );
 }
 
