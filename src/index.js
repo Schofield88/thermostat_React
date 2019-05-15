@@ -1,18 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class Temperature extends React.Component {
+class Thermostat extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      temp: 20,
+    }
+  }
+
   render() {
     return (
-      <div>
-        <h1>You're off</h1>
-        <h2>May God have mercy on your soul</h2>
-      </div>
+      <Temperature temp={this.state.temp}/>
     )
   }
 }
 
+function Temperature(props) {
+  return (
+    <h1>{props.temp}</h1>
+  );
+}
+
 ReactDOM.render(
-  <Temperature />,
+  <Thermostat />,
   document.getElementById('root')
 );
