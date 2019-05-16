@@ -94,6 +94,39 @@ class Thermostat extends React.Component {
         <PowerSave
           onPowerSaveClick = {() => this.handlePowerSaveClick()}
         />
+        <Weather />
+      </div>
+    )
+  }
+}
+
+class Weather extends React.Component {
+  constructor(props) {
+    super(props);
+
+    const localTemp = () => {
+      fetch('https://api.openweathermap.org/data/2.5/weather?id=2636101&appid=86367bd791a2045eb9fff221d690c0af&units=metric')
+      .then(response => response.json())
+      .then((data) => {
+        const tenterdenTemp = data.main.temp;
+        console.log(tenterdenTemp);
+        return tenterdenTemp;
+      });
+    };
+
+    this.state = {
+      weather: 'What\'s the frequency, Kenneth',
+      dummy: 'Dummy temp',
+      localTemp: localTemp(),
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <center>
+          <h3>{'Your local temperature is ' + this.state.localTemp}</h3>
+        </center>
       </div>
     )
   }
