@@ -13,14 +13,51 @@ class Thermostat extends React.Component {
     }
   }
 
+  saveOn() {
+    this.setState({
+      powerSave: true,
+    });
+
+    this.setMaxTemp();
+  }
+
+  saveOff() {
+    this.setState({
+      powerSave: false,
+    });
+
+    this.setMaxTemp();
+  }
+
+  setMaxTemp() {
+    let temp;
+    const powerSave = this.state.powerSave;
+    if (powerSave) {
+      temp = 25;
+    } else {
+      temp = 32;
+    }
+
+    this.setState({
+      maxTemp: temp,
+    })
+  }
+
+  handlePowerSaveClick() {
+    const powerSave = this.state.powerSave;
+    if (powerSave) {
+      this.saveOff();
+    } else {
+      this.saveOn();
+    }
+  }
+
   handleUpClick() {
     let temp = this.state.temp;
     const max = this.state.maxTemp;
-
     if (temp === max) {
       return;
     }
-
 
     this.setState({
       temp: temp += 1,
@@ -30,7 +67,6 @@ class Thermostat extends React.Component {
   handleDownClick() {
     let temp = this.state.temp;
     const min = this.state.minimum;
-
     if (temp === min) {
       return;
     }
@@ -48,12 +84,17 @@ class Thermostat extends React.Component {
 
   render() {
     return (
-      <Temperature
-        temp={this.state.temp}
-        onUpClick = {() => this.handleUpClick()}
-        onDownClick = {() => this.handleDownClick()}
-        onResetClick = {() => this.handleResetClick()}
-      />
+      <div>
+        <Temperature
+          temp={this.state.temp}
+          onUpClick = {() => this.handleUpClick()}
+          onDownClick = {() => this.handleDownClick()}
+          onResetClick = {() => this.handleResetClick()}
+        />
+        <PowerSave
+          onPowerSaveClick = {() => this.handlePowerSaveClick()}
+        />
+      </div>
     )
   }
 }
@@ -63,12 +104,20 @@ function Temperature(props) {
     <div>
       <center>
         <h1 className="bold">{props.temp}</h1>
-        <button onClick={props.onDownClick}>-</button>
-        <button onClick={props.onResetClick}>Reset</button>
-        <button onClick={props.onUpClick}>+</button>
+        <button className="button" onClick={props.onDownClick}>-</button>
+        <button className="button" onClick={props.onResetClick}>Reset</button>
+        <button className="button" onClick={props.onUpClick}>+</button>
       </center>
     </div>
   );
+}
+
+function PowerSave(props) {
+  return(
+    <center>
+      <button className="powersave" onClick={props.onPowerSaveClick}>Power Save Mode</button>
+    </center>
+  )
 }
 
 ReactDOM.render(
