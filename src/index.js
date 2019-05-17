@@ -110,7 +110,7 @@ class Weather extends React.Component {
       localWeather: '',
     };
 
-    const getTemp = () => {
+    (() => {
       fetch('https://api.openweathermap.org/data/2.5/weather?id=2636101&appid=86367bd791a2045eb9fff221d690c0af&units=metric')
       .then(response => response.json())
       .then((data) => {
@@ -120,9 +120,9 @@ class Weather extends React.Component {
           localWeather: data.weather[0].description,
         });
       });
-    };
+    })();
 
-    getTemp();
+    //getTemp();
   }
 
   render() {
