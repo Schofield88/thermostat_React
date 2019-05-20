@@ -1,9 +1,5 @@
 describe('Home page', () => {
 
-  it('successfully loads the home page', () => {
-      cy.visit('/');
-  });
-
   it('clicks the down button', () => {
     cy.visit('/');
     cy.get('[data-cy=down]').click();
