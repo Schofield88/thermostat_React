@@ -7,12 +7,12 @@ describe('Home page', () => {
   it('clicks the down button', () => {
     cy.visit('/');
     cy.get('[data-cy=down]').click();
-    cy.document().should('include', '19');
+    cy.document().contains('19');
   });
 
   it('clicks the up button', () => {
     cy.visit('/');
     cy.get('[data-cy=up]').click();
-    cy.document().should('include', '21');
+    cy.document().contains('21');
   });
 });
