@@ -148,7 +148,7 @@ const Temperature = props =>
 const PowerSave = props =>
     <center>
       <button className="powersave" onClick={props.onPowerSaveClick}>Power Save Mode</button>
-    </center>;    
+    </center>;
 
 ReactDOM.render(
   <Thermostat />,
