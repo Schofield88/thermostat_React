@@ -10,20 +10,23 @@ class Weather extends React.Component {
       localTown: '',
       localWeather: '',
     };
-
-    (() => {
-      fetch('https://api.openweathermap.org/data/2.5/weather?id=2636101&appid=86367bd791a2045eb9fff221d690c0af&units=metric')
-      .then(response => response.json())
-      .then((data) => {
-        this.setState({
-          localTemp: data.main.temp,
-          localTown: data.name,
-          localWeather: data.weather[0].description,
-        });
-      });
-    })();
-
   }
+
+  componentDidMount() {
+    this.fetchWeather();
+  };
+
+  fetchWeather = () => {
+    fetch('https://api.openweathermap.org/data/2.5/weather?id=2636101&appid=86367bd791a2045eb9fff221d690c0af&units=metric')
+    .then(response => response.json())
+    .then((data) => {
+      this.setState({
+        localTemp: data.main.temp,
+        localTown: data.name,
+        localWeather: data.weather[0].description,
+      });
+    });
+  };
 
   render() {
     return (
