@@ -1,5 +1,6 @@
 import React from 'react';
 import Thermostat from './Thermostat';
+import HeaderBar from './HeaderBar';
 
 class App extends React.Component {
 
@@ -7,6 +8,7 @@ class App extends React.Component {
         return (
                 <React.Fragment>
                   <center>
+                    <HeaderBar />
                     <Thermostat />
                   </center>
             </React.Fragment>

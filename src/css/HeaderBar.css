@@ -1,0 +1,10 @@
+.header_bar{
+    height: 70px;
+    background: linear-gradient(to top right,#2797d8,#74c6f2);
+    border-bottom: 1px solid #3c4659;
+}
+
+.header_bar img{
+    margin-top: 15px;
+    margin-left: 15px;
+}
